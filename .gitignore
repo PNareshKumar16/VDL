@@ -1,0 +1,26 @@
+# Local environment configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# Private keys and certificates
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+
+# Local credentials and secrets
+**/credentials*.json
+**/*service-account*.json
+**/secrets/
+
+# Generated dependencies and build output
+**/node_modules/
+**/dist/
+**/target/
+**/apache-maven-*/
