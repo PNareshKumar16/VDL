@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-// API Base URL from env or fallback to localhost Spring Boot server
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+// API Base URL: use env var if provided, otherwise use the production Render backend
+const PRODUCTION_BACKEND = 'https://vdl-txe7.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || PRODUCTION_BACKEND;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
