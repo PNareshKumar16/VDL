@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-// API Base URL: use env var if provided, otherwise use the production Render backend
-const PRODUCTION_BACKEND = 'https://vdl-txe7.onrender.com/api';
-const API_BASE_URL = import.meta.env.VITE_API_URL || PRODUCTION_BACKEND;
+// Use relative /api path — Cloudflare Pages Function proxies this to Render backend
+// This eliminates CORS entirely (same-origin request from browser's perspective)
+const API_BASE_URL = import.meta.env.DEV
+  ? (import.meta.env.VITE_API_URL || 'http://localhost:8080/api')  // local dev: direct to localhost
+  : '/api';  // production: CF Pages Function at /api/* proxies to Render
 
 const api = axios.create({
   baseURL: API_BASE_URL,
